@@ -4,3 +4,6 @@
 [submodule "translation_hub"]
 	path = translation_hub
 	url = https://github.com/guallo/translation_hub.git
+[submodule "translation_client"]
+	path = translation_client
+	url = https://github.com/guallo/translation_client.git
