@@ -8,4 +8,4 @@
 
 ## Create and start the container
 
-1. `sudo docker run -it -p 8081:8081 <image-name>[:<tag>]`
+1. `sudo docker run -it -p 8081:8081 -p 8091:8091 <image-name>[:<tag>]`
