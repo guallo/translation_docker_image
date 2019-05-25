@@ -10,9 +10,9 @@
 
 1. `$ docker run -it --rm -p 8081:8081 -p 8091:8091 -p 8095:8095 --name <container-name> <image-name>[:<tag>]`
 
-Port 8081 is for Translation Service.
-Port 8091 is for Translation Hub - From English to Spanish.
-Port 8095 is for Translation Hub - From Spanish to English.
+Port 8081 is for Translation Service.  
+Port 8091 is for Translation Hub - From English to Spanish.  
+Port 8095 is for Translation Hub - From Spanish to English.  
 
 ## Stop the container
 
