@@ -17,3 +17,9 @@ RUN sed -i 's/^sys\.path\.append.*translation_client.*$/sys.path.append("\/opt\/
 RUN sed -i 's/^DEFAULT_BIND_HOST\s*=.*$/DEFAULT_BIND_HOST = "0.0.0.0"/' /opt/translation_hub/lib/translation_hub/translation_hub.py
 RUN sed -i 's/^DEFAULT_BIND_PORT\s*=.*$/DEFAULT_BIND_PORT = 8091/' /opt/translation_hub/lib/translation_hub/translation_hub.py
 EXPOSE 8091
+
+RUN mkdir /opt/translation_logs/
+COPY translation_main.sh /opt/
+RUN chmod +x /opt/translation_main.sh
+
+ENTRYPOINT ["/opt/translation_main.sh"]
