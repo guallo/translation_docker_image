@@ -8,4 +8,8 @@
 
 ## Create and start the container
 
-1. `docker run -it --rm -p 8081:8081 -p 8091:8091 <image-name>[:<tag>]`
+1. `$ docker run -it --rm -p 8081:8081 -p 8091:8091 --name <container-name> <image-name>[:<tag>]`
+
+## Stop the container
+
+1. `$ docker stop <container-name>`
