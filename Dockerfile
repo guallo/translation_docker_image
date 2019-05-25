@@ -12,11 +12,19 @@ COPY translation_client/ /opt/translation_client/translation_client/
 RUN apt-get install -y python-requests
 RUN sed -i 's/^DEFAULT_BASE_ENDPOINT\s*=.*$/DEFAULT_BASE_ENDPOINT = "http:\/\/localhost:8081\/"/' /opt/translation_client/translation_client/translation_client.py
 
-COPY translation_hub/ /opt/translation_hub/
-RUN sed -i 's/^sys\.path\.append.*translation_client.*$/sys.path.append("\/opt\/translation_client\/")/' /opt/translation_hub/bin/__main__.py
-RUN sed -i 's/^DEFAULT_BIND_HOST\s*=.*$/DEFAULT_BIND_HOST = "0.0.0.0"/' /opt/translation_hub/lib/translation_hub/translation_hub.py
-RUN sed -i 's/^DEFAULT_BIND_PORT\s*=.*$/DEFAULT_BIND_PORT = 8091/' /opt/translation_hub/lib/translation_hub/translation_hub.py
+COPY translation_hub/ /opt/translation_hub_en_es/
+RUN sed -i 's/^sys\.path\.append.*translation_client.*$/sys.path.append("\/opt\/translation_client\/")/' /opt/translation_hub_en_es/bin/__main__.py
+RUN sed -i 's/^DEFAULT_BIND_HOST\s*=.*$/DEFAULT_BIND_HOST = "0.0.0.0"/' /opt/translation_hub_en_es/lib/translation_hub/translation_hub.py
+RUN sed -i 's/^DEFAULT_BIND_PORT\s*=.*$/DEFAULT_BIND_PORT = 8091/' /opt/translation_hub_en_es/lib/translation_hub/translation_hub.py
 EXPOSE 8091
+
+COPY translation_hub/ /opt/translation_hub_es_en/
+RUN sed -i 's/^sys\.path\.append.*translation_client.*$/sys.path.append("\/opt\/translation_client\/")/' /opt/translation_hub_es_en/bin/__main__.py
+RUN sed -i 's/^DEFAULT_SRC_LANG\s*=.*$/DEFAULT_SRC_LANG = u"es"/' /opt/translation_hub_es_en/lib/translation_hub/translation_hub.py
+RUN sed -i 's/^DEFAULT_TARGET_LANG\s*=.*$/DEFAULT_TARGET_LANG = u"en"/' /opt/translation_hub_es_en/lib/translation_hub/translation_hub.py
+RUN sed -i 's/^DEFAULT_BIND_HOST\s*=.*$/DEFAULT_BIND_HOST = "0.0.0.0"/' /opt/translation_hub_es_en/lib/translation_hub/translation_hub.py
+RUN sed -i 's/^DEFAULT_BIND_PORT\s*=.*$/DEFAULT_BIND_PORT = 8095/' /opt/translation_hub_es_en/lib/translation_hub/translation_hub.py
+EXPOSE 8095
 
 RUN mkdir /opt/translation_logs/
 COPY translation_main.sh /opt/
